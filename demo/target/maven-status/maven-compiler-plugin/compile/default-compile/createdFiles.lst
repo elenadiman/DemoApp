@@ -1,0 +1,4 @@
+com/example/demo/DemoApplication.class
+com/example/demo/service/Service.class
+com/example/demo/repository/Repository.class
+com/example/demo/api/Controller.class
