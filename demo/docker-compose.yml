@@ -1,0 +1,25 @@
+version: '3'
+services:
+  demo:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    depends_on:
+      - postgres
+    ports:
+      - "8080:8080"
+    environment:
+      POSTGRES_SERVICE_HOST: postgres
+      POSTGRES_DATABASE: postgres
+      POSTGRESQL_USER: postgres
+      POSTGRES_PASSWORD: postgres
+  postgres:
+    image: postgres
+    restart: always
+    ports:
+      - "8084:5432"
+    environment:
+      #PGDATA: /data/postgres
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
