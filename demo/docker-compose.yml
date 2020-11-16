@@ -1,6 +1,7 @@
 version: '3'
 services:
   demo:
+    stdin_open: true
     build:
       context: ./
       dockerfile: Dockerfile
