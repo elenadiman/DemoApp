@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="card" author="elena">
+        <createTable tableName="Card" schemaName="public">
+            <column name="id" type="bigint">
+            </column>
+            <column name="card_no" type="varchar(255)">
+            </column>
+            <column name="type" type="varchar(1)">
+            </column>
+            <column name="balance" type="numeric">
+            </column>
+            <column name="valid_from" type="timestamp">
+            </column>
+            <column name="valid_to" type="timestamp">
+            </column>
+            <column name="status" type="varchar(50)">
+            </column>
+            <column name="visible_pan" type="varchar(255)">
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="insert" author="liquibase-docs">
+        <insert tableName="Card">
+            <column name="card_no" value="card_no">
+            </column>
+            <column name="type" value="t">
+            </column>
+            <column name="balance" value="5435">
+            </column>
+            <column name="valid_from" value="2020-12-01">
+            </column>
+            <column name="valid_to" value="2021-12-01">
+            </column>
+            <column name="status" value="status">
+            </column>
+            <column name="visible_pan" value="visible_pan">
+            </column>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

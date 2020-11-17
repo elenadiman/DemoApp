@@ -1,7 +1,7 @@
 package com.example.demo;
 
-import com.example.demo.repository.Repository;
-import com.example.demo.service.Service;
+import com.example.demo.repository.CardRepository;
+import com.example.demo.service.CardService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -19,16 +19,16 @@ import java.util.List;
 public class UnitTest {
 
     @Mock
-    private Repository repository;
+    private CardRepository repository;
 
     @InjectMocks
-    private Service service;
+    private CardService service;
 
-    @Test
-    public void getPalindromeStrings(){
-        given(repository.getStrings()).willReturn(new ArrayList<>(Arrays.asList("hello", "world", "mhm", "aha", "aa")));
-        List<String>expected = service.getPalindromeStrings();
-        Assertions.assertEquals(expected, List.of("mhm","aha","aa"));
-    }
+    //@Test
+   // public void getPalindromeStrings(){
+       // given(repository.getStrings()).willReturn(new ArrayList<>(Arrays.asList("hello", "world", "mhm", "aha", "aa")));
+      //  List<String>expected = service.getPalindromeStrings();
+      //  Assertions.assertEquals(expected, List.of("mhm","aha","aa"));
+   // }
 
 }
