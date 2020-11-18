@@ -3,41 +3,43 @@ package com.example.demo.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
 
 @Entity
+@Table(name = "Card")
 public class Card {
 
     @Id
     @GeneratedValue
     private Long id;
 
-    private String card_no;
+    private String cardNumber;
 
     private String type;
 
     private Long balance;
 
-    private Date valid_from;
+    private Date validFrom;
 
-    private Date valid_to;
+    private Date validTo;
 
     private String status;
 
-    private String visible_pan;
+    private String visiblePan;
 
     public Card() {
 
     }
 
-    public Card(String card_no, String type, Long balance, Date valid_from, Date valid_to, String status, String visible_pan) {
-        this.card_no = card_no;
+    public Card(String cardNumber, String type, Long balance, Date validFrom, Date validTo, String status, String visiblePan) {
+        this.cardNumber = cardNumber;
         this.type = type;
         this.balance = balance;
-        this.valid_from = valid_from;
-        this.valid_to = valid_to;
+        this.validFrom = validFrom;
+        this.validTo = validTo;
         this.status = status;
-        this.visible_pan = visible_pan;
+        this.visiblePan = visiblePan;
     }
 
     public Long getId() {
@@ -48,12 +50,12 @@ public class Card {
         this.id = id;
     }
 
-    public String getCard_no() {
-        return card_no;
+    public String getCardNumber() {
+        return cardNumber;
     }
 
-    public void setCard_no(String card_no) {
-        this.card_no = card_no;
+    public void setCardNumber(String cardNumber) {
+        this.cardNumber = cardNumber;
     }
 
     public String getType() {
@@ -72,20 +74,20 @@ public class Card {
         this.balance = balance;
     }
 
-    public Date getValid_from() {
-        return valid_from;
+    public Date getValidFrom() {
+        return validFrom;
     }
 
-    public void setValid_from(Date valid_from) {
-        this.valid_from = valid_from;
+    public void setValidFrom(Date validFrom) {
+        this.validFrom = validFrom;
     }
 
-    public Date getValid_to() {
-        return valid_to;
+    public Date getValidTo() {
+        return validTo;
     }
 
-    public void setValid_to(Date valid_to) {
-        this.valid_to = valid_to;
+    public void setValidTo(Date validTo) {
+        this.validTo = validTo;
     }
 
     public String getStatus() {
@@ -96,25 +98,25 @@ public class Card {
         this.status = status;
     }
 
-    public String getVisible_pan() {
-        return visible_pan;
+    public String getVisiblePan() {
+        return visiblePan;
     }
 
-    public void setVisible_pan(String visible_pan) {
-        this.visible_pan = visible_pan;
+    public void setVisiblePan(String visiblePan) {
+        this.visiblePan = visiblePan;
     }
 
     @Override
     public String toString() {
         return "Card{" +
                 "id=" + id +
-                ", card_no='" + card_no + '\'' +
+                ", cardNumber='" + cardNumber + '\'' +
                 ", type='" + type + '\'' +
                 ", balance=" + balance +
-                ", valid_from=" + valid_from +
-                ", valid_to=" + valid_to +
+                ", validFrom=" + validFrom +
+                ", validTo=" + validTo +
                 ", status='" + status + '\'' +
-                ", visible_pan='" + visible_pan + '\'' +
+                ", visiblePan='" + visiblePan + '\'' +
                 '}';
     }
 

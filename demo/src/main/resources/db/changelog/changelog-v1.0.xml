@@ -8,6 +8,7 @@
     <changeSet id="card" author="elena">
         <createTable tableName="Card" schemaName="public">
             <column name="id" type="bigint">
+                <constraints primaryKey="true"/>
             </column>
             <column name="card_no" type="varchar(255)">
             </column>
@@ -28,6 +29,8 @@
 
     <changeSet id="insert" author="liquibase-docs">
         <insert tableName="Card">
+            <column name="id" value="1">
+            </column>
             <column name="card_no" value="card_no">
             </column>
             <column name="type" value="t">
