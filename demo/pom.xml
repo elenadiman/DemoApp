@@ -95,6 +95,11 @@
                 <version>4.2.0</version>
                 <configuration>
                     <propertyFile>src/main/resources/application.properties</propertyFile>
+                    <url>jdbc:postgresql://localhost:5432/postgres</url>
+                    <changeLogFile>db/changelog/changelog-v1.0.xml</changeLogFile>
+                    <username>postgres</username>
+                    <password>postgres</password>
+                    <propertyFileWillOverride>true</propertyFileWillOverride>
                 </configuration>
             </plugin>
 
