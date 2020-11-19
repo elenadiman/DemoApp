@@ -1,32 +1,30 @@
 package com.example.demo.service;
 
+import com.example.demo.model.Card;
 import com.example.demo.repository.CardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.Date;
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 @org.springframework.stereotype.Service
 public class CardService {
 
-    private CardRepository repository;
+    private CardRepository cardRepository;
 
     @Autowired
-    public CardService(CardRepository repository) {
-        this.repository = repository;
+    public CardService(CardRepository cardRepository) {
+        this.cardRepository = cardRepository;
     }
 
-    //public static boolean isPalindrome(String str) {
-       // if (str.length() == 0 || str.length() == 1)
-         //   return true;
-       // if (str.charAt(0) == str.charAt(str.length() - 1))
-         //   return isPalindrome(str.substring(1, str.length() - 1));
-      //  return false;
-   // }
+    public void createCard(String cardNumber, String type, Long balance, Date validFrom, Date validTo, String status, String visiblePan) {
+        Card card = new Card(cardNumber, type, balance, validFrom, validTo, status, visiblePan);
+        cardRepository.save(card);
+    }
 
-    //public List<String> getPalindromeStrings() {
-       // return repository.getStrings().stream().filter(CardService::isPalindrome).collect(Collectors.toList());
-   // }
-
+    public List<Card> findCards() {
+        return cardRepository.findAll();
+    }
 
 }
