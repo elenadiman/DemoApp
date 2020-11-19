@@ -7,14 +7,14 @@ import javax.persistence.Table;
 import java.util.Date;
 
 @Entity
-@Table(name = "Card")
+@Table(name = "card")
 public class Card {
 
     @Id
     @GeneratedValue
     private Long id;
 
-    private String cardNumber;
+    private String cardNo;
 
     private String type;
 
@@ -32,8 +32,8 @@ public class Card {
 
     }
 
-    public Card(String cardNumber, String type, Long balance, Date validFrom, Date validTo, String status, String visiblePan) {
-        this.cardNumber = cardNumber;
+    public Card(String cardNo, String type, Long balance, Date validFrom, Date validTo, String status, String visiblePan) {
+        this.cardNo = cardNo;
         this.type = type;
         this.balance = balance;
         this.validFrom = validFrom;
@@ -51,11 +51,11 @@ public class Card {
     }
 
     public String getCardNumber() {
-        return cardNumber;
+        return cardNo;
     }
 
     public void setCardNumber(String cardNumber) {
-        this.cardNumber = cardNumber;
+        this.cardNo = cardNumber;
     }
 
     public String getType() {
@@ -110,7 +110,7 @@ public class Card {
     public String toString() {
         return "Card{" +
                 "id=" + id +
-                ", cardNumber='" + cardNumber + '\'' +
+                ", cardNumber='" + cardNo + '\'' +
                 ", type='" + type + '\'' +
                 ", balance=" + balance +
                 ", validFrom=" + validFrom +

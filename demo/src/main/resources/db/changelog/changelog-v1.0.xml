@@ -48,4 +48,10 @@
         </insert>
     </changeSet>
 
+    <changeSet id="renameTable" author="liquibase-docs">
+        <renameTable newTableName="card"
+                      oldTableName="Card"
+                      schemaName="public"/>
+    </changeSet>
+
 </databaseChangeLog>
