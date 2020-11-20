@@ -36,21 +36,22 @@ public class CardService {
         cardRepository.deleteById(id);
     }
 
-    public Card updateCard(Long id, String cardNo, String type, Long balance, Date validFrom, Date validTo, String status, String visiblePan) {
-       Card card = cardRepository.findById(id).get();
-                card.setCardNumber(cardNo);
-                card.setType(type);
-                card.setBalance(balance);
-                card.setValidFrom(validFrom);
-                card.setValidTo(validTo);
-                card.setStatus(status);
-                card.setVisiblePan(visiblePan);
-                return cardRepository.save(card);
+    public void updateCard(Long id, String cardNo, String type, Long balance, Date validFrom, Date validTo, String status, String visiblePan) {
+       cardRepository.findById(id).ifPresent(card -> {
+           card.setCardNumber(cardNo);
+           card.setType(type);
+           card.setBalance(balance);
+           card.setValidFrom(validFrom);
+           card.setValidTo(validTo);
+           card.setStatus(status);
+           card.setVisiblePan(visiblePan);
+           cardRepository.save(card);
+       });
+
     }
 
-
     public Optional<Card> findCardByCardNumber(String cardNo) {
-        return cardRepository.findAll().stream()
-                .filter(card -> card.getCardNumber().equals(cardNo)).findAny();
+        return cardRepository.findByCardNo(cardNo);
+
     }
 }

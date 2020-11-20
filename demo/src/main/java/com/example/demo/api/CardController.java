@@ -50,8 +50,8 @@ public class CardController {
 
 
     @PutMapping("/api/cards/{id}")
-    public Card updateCard(@PathVariable Long id, @RequestBody CreateCardRequest request){
-       return cardService.updateCard(id, request.cardNumber, request.type, request.balance, request.validFrom, request.validTo, request.status, request.visiblePan);
+    public void updateCard(@PathVariable Long id, @RequestBody CreateCardRequest request){
+        cardService.updateCard(id, request.cardNumber, request.type, request.balance, request.validFrom, request.validTo, request.status, request.visiblePan);
     }
 
     @DeleteMapping("/api/cards/{id}")
