@@ -1,5 +1,6 @@
 package com.example.demo.repository;
 
+import com.example.demo.dto.CreateCardRequest;
 import com.example.demo.model.Card;
 import org.springframework.data.jpa.repository.JpaRepository;
 
