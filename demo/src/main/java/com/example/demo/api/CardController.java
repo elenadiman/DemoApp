@@ -3,7 +3,9 @@ package com.example.demo.api;
 import com.example.demo.model.Card;
 import com.example.demo.service.CardService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Date;
 import java.util.List;
@@ -38,12 +40,12 @@ public class CardController {
 
     @GetMapping("/api/cards/{id}")
         public Card findCard(@PathVariable Long id){
-            return cardService.findCard(id).get();
+            return cardService.findCard(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         }
 
     @GetMapping("/api/card/{cardNo}")
         public Card findCardByCardNumber(@PathVariable String cardNo){
-        return cardService.findCardByCardNumber(cardNo).get();
+        return cardService.findCardByCardNumber(cardNo).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
 
