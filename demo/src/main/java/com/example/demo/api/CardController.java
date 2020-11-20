@@ -41,6 +41,12 @@ public class CardController {
             return cardService.findCard(id).get();
         }
 
+    @GetMapping("/api/card/{cardNo}")
+        public Card findCardByCardNumber(@PathVariable String cardNo){
+        return cardService.findCardByCardNumber(cardNo).get();
+    }
+
+
     @PutMapping("/api/cards/{id}")
     public Card updateCard(@PathVariable Long id, @RequestBody CreateCardRequest request){
        return cardService.updateCard(id, request.cardNumber, request.type, request.balance, request.validFrom, request.validTo, request.status, request.visiblePan);

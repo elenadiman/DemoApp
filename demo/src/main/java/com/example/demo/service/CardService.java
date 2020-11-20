@@ -49,4 +49,8 @@ public class CardService {
     }
 
 
+    public Optional<Card> findCardByCardNumber(String cardNo) {
+        return cardRepository.findAll().stream()
+                .filter(card -> card.getCardNumber().equals(cardNo)).findAny();
+    }
 }
