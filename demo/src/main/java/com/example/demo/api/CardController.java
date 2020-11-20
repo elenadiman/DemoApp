@@ -1,5 +1,6 @@
 package com.example.demo.api;
 
+import com.example.demo.dto.CreateCardRequest;
 import com.example.demo.model.Card;
 import com.example.demo.service.CardService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,7 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -19,19 +19,9 @@ public class CardController {
         this.cardService = cardService;
     }
 
-    public static class CreateCardRequest{
-        public String cardNumber;
-        public String type;
-        public Long balance;
-        public Date validFrom;
-        public Date validTo;
-        public String status;
-        public String visiblePan;
-    }
-
     @PostMapping("/api/cards")
     public void createCard(@RequestBody CreateCardRequest request){
-        cardService.createCard(request.cardNumber, request.type, request.balance, request.validFrom, request.validTo, request.status, request.visiblePan);
+        cardService.createCard(request.getCardNumber(), request.getType(), request.getBalance(), request.getValidFrom(), request.getValidTo(), request.getStatus(), request.getVisiblePan());
     }
     @GetMapping("/api/cards")
     public List<Card>findCards(){
@@ -48,10 +38,9 @@ public class CardController {
         return cardService.findCardByCardNumber(cardNo).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
-
     @PutMapping("/api/cards/{id}")
     public void updateCard(@PathVariable Long id, @RequestBody CreateCardRequest request){
-        cardService.updateCard(id, request.cardNumber, request.type, request.balance, request.validFrom, request.validTo, request.status, request.visiblePan);
+        cardService.updateCard(id, request.getCardNumber(), request.getType(), request.getBalance(), request.getValidFrom(), request.getValidTo(), request.getStatus(), request.getVisiblePan());
     }
 
     @DeleteMapping("/api/cards/{id}")
