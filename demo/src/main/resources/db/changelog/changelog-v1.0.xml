@@ -54,4 +54,35 @@
                       schemaName="public"/>
     </changeSet>
 
+    <changeSet id="insert2" author="liquibase-docs">
+        <insert tableName="card">
+            <column name="id" value="2">
+            </column>
+            <column name="card_no" value="24234234">
+            </column>
+            <column name="type" value="2">
+            </column>
+            <column name="balance" value="2000">
+            </column>
+            <column name="valid_from" value="2020-12-02">
+            </column>
+            <column name="valid_to" value="2021-12-02">
+            </column>
+            <column name="status" value="status2">
+            </column>
+            <column name="visible_pan" value="visible2">
+            </column>
+        </insert>
+    </changeSet>
+
+    <changeSet author="liquibase-docs" id="addAutoIncrement">
+        <addAutoIncrement columnDataType="BIGINT"
+                          columnName="id"
+                          defaultOnNull="true"
+                          generationType="ALWAYS"
+                          incrementBy="1"
+                          schemaName="public"
+                          tableName="card"/>
+    </changeSet>
+
 </databaseChangeLog>

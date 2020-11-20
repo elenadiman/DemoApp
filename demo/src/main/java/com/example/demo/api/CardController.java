@@ -3,10 +3,7 @@ package com.example.demo.api;
 import com.example.demo.model.Card;
 import com.example.demo.service.CardService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
@@ -37,5 +34,20 @@ public class CardController {
     @GetMapping("/api/cards")
     public List<Card>findCards(){
         return cardService.findCards();
+    }
+
+    @GetMapping("/api/cards/{id}")
+        public Card findCard(@PathVariable Long id){
+            return cardService.findCard(id).get();
+        }
+
+    @PutMapping("/api/cards/{id}")
+    public Card updateCard(@PathVariable Long id, @RequestBody CreateCardRequest request){
+       return cardService.updateCard(id, request.cardNumber, request.type, request.balance, request.validFrom, request.validTo, request.status, request.visiblePan);
+    }
+
+    @DeleteMapping("/api/cards/{id}")
+    public void deleteCard(@PathVariable Long id){
+        cardService.deleteCard(id);
     }
 }

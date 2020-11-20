@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 
 @org.springframework.stereotype.Service
@@ -26,5 +27,26 @@ public class CardService {
     public List<Card> findCards() {
         return cardRepository.findAll();
     }
+
+    public Optional<Card> findCard(Long id) {
+        return cardRepository.findById(id);
+    }
+
+    public void deleteCard(Long id) {
+        cardRepository.deleteById(id);
+    }
+
+    public Card updateCard(Long id, String cardNo, String type, Long balance, Date validFrom, Date validTo, String status, String visiblePan) {
+       Card card = cardRepository.findById(id).get();
+                card.setCardNumber(cardNo);
+                card.setType(type);
+                card.setBalance(balance);
+                card.setValidFrom(validFrom);
+                card.setValidTo(validTo);
+                card.setStatus(status);
+                card.setVisiblePan(visiblePan);
+                return cardRepository.save(card);
+    }
+
 
 }
