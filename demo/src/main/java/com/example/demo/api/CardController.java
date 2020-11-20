@@ -38,9 +38,10 @@ public class CardController {
         return cardService.findCardByCardNumber(cardNo).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
+
     @PutMapping("/api/cards/{id}")
     public void updateCard(@PathVariable Long id, @RequestBody CreateCardRequest request){
-        cardService.updateCard(id, request.getCardNumber(), request.getType(), request.getBalance(), request.getValidFrom(), request.getValidTo(), request.getStatus(), request.getVisiblePan());
+        cardService.updateCard(id, request);
     }
 
     @DeleteMapping("/api/cards/{id}")

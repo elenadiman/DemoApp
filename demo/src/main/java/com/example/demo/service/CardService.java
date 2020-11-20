@@ -1,7 +1,9 @@
 package com.example.demo.service;
 
+import com.example.demo.dto.CreateCardRequest;
 import com.example.demo.model.Card;
 import com.example.demo.repository.CardRepository;
+import org.mapstruct.Mapping;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Date;
@@ -36,17 +38,19 @@ public class CardService {
         cardRepository.deleteById(id);
     }
 
-    public void updateCard(Long id, String cardNo, String type, Long balance, Date validFrom, Date validTo, String status, String visiblePan) {
-       cardRepository.findById(id).ifPresent(card -> {
-           card.setCardNumber(cardNo);
-           card.setType(type);
-           card.setBalance(balance);
-           card.setValidFrom(validFrom);
-           card.setValidTo(validTo);
-           card.setStatus(status);
-           card.setVisiblePan(visiblePan);
-           cardRepository.save(card);
-       });
+
+
+    public void updateCard(Long id, CreateCardRequest request) {
+        cardRepository.findById(id).ifPresent(card -> {
+            card.setCardNumber(request.getCardNumber());
+            card.setType(request.getType());
+            card.setBalance(request.getBalance());
+            card.setValidFrom(request.getValidFrom());
+            card.setValidTo(request.getValidTo());
+            card.setStatus(request.getStatus());
+            card.setVisiblePan(request.getVisiblePan());
+            cardRepository.save(card);
+        });
 
     }
 
