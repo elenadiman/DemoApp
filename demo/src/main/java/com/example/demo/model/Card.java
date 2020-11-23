@@ -2,6 +2,7 @@ package com.example.demo.model;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.function.Consumer;
 
 @Entity
 @Table(name = "card")

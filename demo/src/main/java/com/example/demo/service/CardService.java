@@ -6,6 +6,7 @@ import com.example.demo.model.Card;
 import com.example.demo.repository.CardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
+
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -40,7 +41,8 @@ public class CardService {
 
 
     public Card updateCard(Long id, CreateCardRequest createCardRequest) {
-      return CardMapper.instance.card(createCardRequest);
+        Card card = CardMapper.instance.card(id, createCardRequest);
+        return cardRepository.save(card);
     }
 
     public Optional<Card> findCardByCardNumber(String cardNo) {

@@ -12,6 +12,7 @@ public class CreateCardRequest {
     private String status;
     private String visiblePan;
 
+
     public String getCardNumber() {
         return cardNumber;
     }
