@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 public class CardController {
-    private CardService cardService;
+    private final CardService cardService;
 
     @Autowired
     public CardController(CardService cardService) {
@@ -20,8 +20,8 @@ public class CardController {
     }
 
     @PostMapping("/api/cards")
-    public void createCard(@RequestBody CreateCardRequest request){
-        cardService.createCard(request.getCardNumber(), request.getType(), request.getBalance(), request.getValidFrom(), request.getValidTo(), request.getStatus(), request.getVisiblePan());
+    public Card createCard(@RequestBody Card card){
+      return cardService.createCard(card);
     }
     @GetMapping("/api/cards")
     public List<Card>findCards(){
