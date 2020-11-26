@@ -17,7 +17,9 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import static org.mockito.ArgumentMatchers.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.mockito.Mockito.when;
+
 
 import java.sql.Date;
 
@@ -36,30 +38,38 @@ public class CardControllerTest {
 
 
     @Test
-    public void findCardByCardNoTest() throws Exception{
+    public void findCardByCardNoTest() throws Exception {
         Card card = new Card();
         when(cardService.findCardByCardNumber(anyString())).thenReturn(java.util.Optional.of(card));
         mockMvc.perform(MockMvcRequestBuilders.get("/api/card/1"))
+                .andDo(print())
                 .andExpect(status().isOk());
     }
+
     @Test
-    public void findCardByIdTest() throws Exception{
+    public void findCardByIdTest() throws Exception {
         Card card = new Card();
         when(cardService.findCard(anyLong())).thenReturn(java.util.Optional.of(card));
 
         mockMvc.perform(MockMvcRequestBuilders.get("/api/cards/1"))
+                .andDo(print())
                 .andExpect(status().isOk());
     }
+
     @Test
-    public void deleteCardTest() throws Exception{
+    public void deleteCardTest() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.delete("/api/cards/1"))
+                .andDo(print())
                 .andExpect(status().isOk());
     }
+
     @Test
-    public void findCardsTest()throws Exception{
+    public void findCardsTest() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/api/cards"))
+                .andDo(print())
                 .andExpect(status().isOk());
     }
+
     @Test
     public void createCardTest() throws Exception {
         Card card = new Card();
@@ -76,6 +86,7 @@ public class CardControllerTest {
         mockMvc.perform(MockMvcRequestBuilders.post("/api/cards/")
                 .content(new ObjectMapper().writeValueAsString(card))
                 .contentType(MediaType.APPLICATION_JSON))
+                .andDo(print())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.type").value("1"))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.balance").value(7000L))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.validFrom").value("2020-12-01"))
@@ -85,8 +96,9 @@ public class CardControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.cardNumber").value("1234567890"))
                 .andExpect(status().isOk());
     }
+
     @Test
-    public void updateCardTest() throws Exception{
+    public void updateCardTest() throws Exception {
         Card card = new Card();
         card.setCardNumber("101010101");
         when(cardService.updateCard(anyLong(), any(CreateCardRequest.class))).thenReturn(card);
@@ -95,6 +107,7 @@ public class CardControllerTest {
                 .content(new ObjectMapper().writeValueAsString(card))
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.cardNumber").value("101010101"))
+                .andDo(print())
                 .andExpect(status().isOk());
 
     }

@@ -20,32 +20,33 @@ public class CardController {
     }
 
     @PostMapping("/api/cards")
-    public Card createCard(@RequestBody Card card){
-      return cardService.createCard(card);
+    public Card createCard(@RequestBody Card card) {
+        return cardService.createCard(card);
     }
+
     @GetMapping("/api/cards")
-    public List<Card>findCards(){
+    public List<Card> findCards() {
         return cardService.findCards();
     }
 
     @GetMapping("/api/cards/{id}")
-        public Card findCard(@PathVariable Long id){
-            return cardService.findCard(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-        }
+    public Card findCard(@PathVariable Long id) {
+        return cardService.findCard(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    }
 
     @GetMapping("/api/card/{cardNo}")
-        public Card findCardByCardNumber(@PathVariable String cardNo){
-        return cardService.findCardByCardNumber(cardNo).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    public Card findCardByCardNumber(@PathVariable String cardNo) {
+        return cardService.findCardByCardNumber(cardNo).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
 
     @PutMapping("/api/cards/{id}")
-    public Card updateCard(@PathVariable Long id, @RequestBody CreateCardRequest createCardRequest){
+    public Card updateCard(@PathVariable Long id, @RequestBody CreateCardRequest createCardRequest) {
         return cardService.updateCard(id, createCardRequest);
     }
 
     @DeleteMapping("/api/cards/{id}")
-    public void deleteCard(@PathVariable Long id){
+    public void deleteCard(@PathVariable Long id) {
         cardService.deleteCard(id);
     }
 }

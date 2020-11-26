@@ -50,8 +50,8 @@
 
     <changeSet id="renameTable" author="liquibase-docs">
         <renameTable newTableName="card"
-                      oldTableName="Card"
-                      schemaName="public"/>
+                     oldTableName="Card"
+                     schemaName="public"/>
     </changeSet>
 
     <changeSet id="insert2" author="liquibase-docs">
