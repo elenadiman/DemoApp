@@ -26,10 +26,10 @@ public class PayloadFilter implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
-
+        int i = 0;
         if(request.getContentLengthLong() > payloadConfig.getMaximumRequestSize()){
             response.setStatus(HttpStatus.BAD_REQUEST.value());
-            response.getWriter().write("Payload size is too large");
+            response.sendError(i, "Payload size is too large");
         }
 
         filterChain.doFilter(servletRequest, servletResponse);
