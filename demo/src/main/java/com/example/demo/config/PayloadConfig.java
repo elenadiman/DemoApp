@@ -14,7 +14,6 @@ public class PayloadConfig {
     public PayloadConfig(int maximumRequestSize) {
         this.maximumRequestSize = maximumRequestSize;
     }
-
     public int getMaximumRequestSize() {
         return maximumRequestSize;
     }
