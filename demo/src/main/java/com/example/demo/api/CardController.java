@@ -1,5 +1,6 @@
 package com.example.demo.api;
 
+import com.example.demo.config.PayloadConfig;
 import com.example.demo.dto.CreateCardRequest;
 import com.example.demo.model.Card;
 import com.example.demo.service.CardService;
@@ -12,6 +13,7 @@ import java.util.List;
 
 @RestController
 public class CardController {
+
     private final CardService cardService;
 
     @Autowired
