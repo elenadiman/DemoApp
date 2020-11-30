@@ -15,7 +15,7 @@ import java.io.IOException;
 
 public class PayloadFilter implements Filter {
 
-    private PayloadConfig payloadConfig;
+    private final PayloadConfig payloadConfig;
 
     @Autowired
     public PayloadFilter(PayloadConfig payloadConfig){
@@ -28,7 +28,6 @@ public class PayloadFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         int i = 0;
         if(request.getContentLengthLong() > payloadConfig.getMaximumRequestSize()){
-            response.setStatus(HttpStatus.BAD_REQUEST.value());
             response.sendError(i, "Payload size is too large");
         }
 

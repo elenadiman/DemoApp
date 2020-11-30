@@ -1,6 +1,5 @@
 package com.example.demo.api;
 
-import com.example.demo.config.PayloadConfig;
 import com.example.demo.dto.CreateCardRequest;
 import com.example.demo.model.Card;
 import com.example.demo.service.CardService;
