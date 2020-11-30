@@ -11,8 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 public class PayloadFilterTest {
 
     @Test
@@ -24,8 +22,6 @@ public class PayloadFilterTest {
         PayloadConfig mockPayloadConfig = Mockito.mock(PayloadConfig.class);
 
         PayloadFilter payloadFilter = new PayloadFilter(mockPayloadConfig);
-
-        assertThat(mockResponse.getStatus()).isEqualTo(0);
 
         payloadFilter.doFilter(mockRequest, mockResponse, mockFilterChain);
 
