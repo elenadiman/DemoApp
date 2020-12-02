@@ -1,4 +1,4 @@
-package com.example.demo.api;
+package com.example.demo;
 
 import com.example.demo.model.Card;
 import com.example.demo.service.CardService;

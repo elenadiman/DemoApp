@@ -1,13 +1,9 @@
 package com.example.demo;
 
-import com.example.demo.api.TestController;
-import com.example.demo.config.PayloadConfig;
-import com.example.demo.filter.PayloadFilter;
 import com.example.demo.model.Card;
 import com.example.demo.service.CardService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
@@ -19,11 +15,10 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import org.springframework.test.web.servlet.MockMvc;
-import javax.servlet.FilterChain;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+
 
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(TestController.class)
@@ -46,7 +41,9 @@ public class PayloadFilterTest {
                 .content(new ObjectMapper().writeValueAsString(card))
                 .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())
-                .andExpect(status().isBadRequest());
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.error_message").value("Payload size is too large"));
+
         }
 
 }

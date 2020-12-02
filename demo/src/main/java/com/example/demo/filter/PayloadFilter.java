@@ -24,13 +24,22 @@ public class PayloadFilter implements Filter {
 
         if(request.getContentLengthLong() > payloadConfig.getMaximumRequestSize()){
             response.setStatus(HttpStatus.BAD_REQUEST.value());
-            response.getWriter().write("Payload size is too large");
+            response.getWriter().write(getErrorMessageTemplate()
+                    .formatted("Payload size is too large"));
             return;
         }
 
         filterChain.doFilter(request, response);
 
 
+    }
+
+    private String getErrorMessageTemplate() {
+        return """
+            {
+              "error_message": "%s" 
+            }
+            """;
     }
 
 
