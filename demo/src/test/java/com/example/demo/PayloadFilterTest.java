@@ -27,22 +27,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(TestController.class)
-@TestPropertySource(properties = "configuration.maximumRequestSize=200")
+@TestPropertySource(properties = "configuration.maximumRequestSize=100")
 public class PayloadFilterTest {
 
     @Autowired
     MockMvc mockMvc;
 
-    @Mock
-    HttpServletRequest request;
-    @Mock
-    HttpServletResponse response;
-    @Mock
-    FilterChain filterChain;
-    @Mock
-    PayloadConfig config;
-    @MockBean
-    PayloadFilter filter;
     @MockBean
     CardService service;
 
@@ -51,7 +41,6 @@ public class PayloadFilterTest {
     public void doFilterTest() throws Exception {
         Card card = new Card();
             given(service.createCard(any(Card.class))).willReturn(card);
-            filter.doFilter(request, response, filterChain);
 
         mockMvc.perform(MockMvcRequestBuilders.post("/api/test/")
                 .content(new ObjectMapper().writeValueAsString(card))
