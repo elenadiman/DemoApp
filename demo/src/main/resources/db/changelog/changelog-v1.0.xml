@@ -85,4 +85,36 @@
                           tableName="card"/>
     </changeSet>
 
+    <changeSet author="liquibase-docs" id="addColumn-processed">
+        <addColumn schemaName= "public"
+                   tableName="card" >
+            <column name="processed"
+                    type="BOOLEAN"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="insert3" author="liquibase-docs">
+        <insert tableName="card">
+            <column name="id" value="3">
+            </column>
+            <column name="card_no" value="1234567890">
+            </column>
+            <column name="type" value="m">
+            </column>
+            <column name="balance" value="30000">
+            </column>
+            <column name="valid_from" value="2020-12-20">
+            </column>
+            <column name="valid_to" value="2021-12-20">
+            </column>
+            <column name="status" value="active">
+            </column>
+            <column name="visible_pan" value="101010">
+            </column>
+            <column name="processed" value="false">
+            </column>
+        </insert>
+    </changeSet>
+
+
 </databaseChangeLog>

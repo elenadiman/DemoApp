@@ -21,7 +21,7 @@ public class CardService {
     }
 
     public Card createCard(Card card) {
-        card = new Card(card.getCardNumber(), card.getType(), card.getBalance(), card.getValidFrom(), card.getValidTo(), card.getStatus(), card.getVisiblePan());
+        card = new Card(card.getCardNumber(), card.getType(), card.getBalance(), card.getValidFrom(), card.getValidTo(), card.getStatus(), card.getVisiblePan(), card.getProcessed());
         return cardRepository.save(card);
     }
 

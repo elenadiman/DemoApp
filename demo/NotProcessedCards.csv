@@ -1,0 +1,2 @@
+id, card_no, type, balance, valid_from, valid_to, status, visible_pan, processed
+3 , 1234567890, m, 30000, 2020-12-20, 2021-12-20, active, 101010, false

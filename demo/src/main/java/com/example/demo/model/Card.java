@@ -25,11 +25,11 @@ public class Card {
 
     private String visiblePan;
 
-    public Card() {
+    private Boolean processed;
 
-    }
+    public Card(){}
 
-    public Card(String cardNo, String type, Long balance, Date validFrom, Date validTo, String status, String visiblePan) {
+    public Card(String cardNo, String type, Long balance, Date validFrom, Date validTo, String status, String visiblePan, Boolean processed) {
         this.cardNo = cardNo;
         this.type = type;
         this.balance = balance;
@@ -37,6 +37,7 @@ public class Card {
         this.validTo = validTo;
         this.status = status;
         this.visiblePan = visiblePan;
+        this.processed = processed;
     }
 
     public Long getId() {
@@ -103,6 +104,14 @@ public class Card {
         this.visiblePan = visiblePan;
     }
 
+    public Boolean getProcessed() {
+        return processed;
+    }
+
+    public void setProcessed(Boolean processed) {
+        this.processed = processed;
+    }
+
     @Override
     public String toString() {
         return "Card{" +
@@ -114,6 +123,7 @@ public class Card {
                 ", validTo=" + validTo +
                 ", status='" + status + '\'' +
                 ", visiblePan='" + visiblePan + '\'' +
+                ", processed='" + processed + '\'' +
                 '}';
     }
 
