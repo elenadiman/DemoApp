@@ -116,5 +116,73 @@
         </insert>
     </changeSet>
 
+    <changeSet id="insert4" author="liquibase-docs">
+        <insert tableName="card">
+            <column name="id" value="4">
+            </column>
+            <column name="card_no" value="9876543210">
+            </column>
+            <column name="type" value="d">
+            </column>
+            <column name="balance" value="40000">
+            </column>
+            <column name="valid_from" value="2020-12-07">
+            </column>
+            <column name="valid_to" value="2021-12-07">
+            </column>
+            <column name="status" value="active">
+            </column>
+            <column name="visible_pan" value="010101">
+            </column>
+            <column name="processed" value="false">
+            </column>
+        </insert>
+    </changeSet>
+
+    <changeSet id="insert5" author="liquibase-docs">
+        <insert tableName="card">
+            <column name="id" value="5">
+            </column>
+            <column name="card_no" value="10293948576">
+            </column>
+            <column name="type" value="m">
+            </column>
+            <column name="balance" value="50000">
+            </column>
+            <column name="valid_from" value="2020-12-15">
+            </column>
+            <column name="valid_to" value="2021-12-15">
+            </column>
+            <column name="status" value="active">
+            </column>
+            <column name="visible_pan" value="12345">
+            </column>
+            <column name="processed" value="false">
+            </column>
+        </insert>
+    </changeSet>
+    <changeSet id="insert7" author="liquibase-docs">
+        <insert tableName="card">
+            <column name="id" value="7">
+            </column>
+            <column name="card_no" value="10293948576">
+            </column>
+            <column name="type" value="m">
+            </column>
+            <column name="balance" value="70000">
+            </column>
+            <column name="valid_from" value="2020-12-15">
+            </column>
+            <column name="valid_to" value="2021-12-15">
+            </column>
+            <column name="status" value="active">
+            </column>
+            <column name="visible_pan" value="1234567">
+            </column>
+            <column name="processed" value="false">
+            </column>
+        </insert>
+    </changeSet>
+
 
 </databaseChangeLog>

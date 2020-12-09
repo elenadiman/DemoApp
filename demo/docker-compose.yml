@@ -8,7 +8,7 @@ services:
     depends_on:
       - postgres
     ports:
-      - "8080:8080"
+      - "8081:8081"
     environment:
       POSTGRES_SERVICE_HOST: postgres
       POSTGRES_DATABASE: postgres
@@ -18,7 +18,7 @@ services:
     image: postgres:11.8
     restart: always
     ports:
-      - "8083:5432"
+      - "8084:5432"
     environment:
       #PGDATA: /data/postgres
       POSTGRES_DB: postgres
